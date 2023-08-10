@@ -4,7 +4,16 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>0.0.2</Version>
+        <Version>0.0.3</Version>
+        <Title>LinkAce.Api</Title>
+        <Authors>prplecake</Authors>
+        <PackageProjectUrl>https://github.com/prplecake/LinkAce.NET</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/prplecake/LinkAce.NET/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/prplecake/LinkAce.NET</RepositoryUrl>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DebugType>none</DebugType>
     </PropertyGroup>
 
     <ItemGroup>

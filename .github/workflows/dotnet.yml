@@ -49,4 +49,4 @@ jobs:
       - name: Push NuGet
         if: ${{ github.event_name != 'pull_request' }}
         run: |
-          dotnet nuget push packages/*.nupkg
+          dotnet nuget push packages/*.nupkg --skip-duplicate

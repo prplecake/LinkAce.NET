@@ -1,0 +1,52 @@
+name: .NET
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+permissions:
+  contents: read
+  checks: write
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: [ '7.0.x' ]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+          source-url: https://nuget.pkg.github.com/prplecake/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+#      - name: Test
+#        run: dotnet test --no-build --verbosity normal --logger "trx" --results-directory "./TestResults"
+#      - uses: dorny/test-reporter@v1
+#        if: always()
+#        with:
+#          name: .NET Test Results
+#          path: TestResults/*.trx
+#          reporter: dotnet-trx
+      - name: Pack NuGet
+        run: dotnet pack -c Release -o packages
+      - name: Upload NuGet Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: src/LinkAce.NET/bin/Release/*.nupkg
+      - name: Push NuGet
+        if: ${{ github.event_name != 'pull_request' }}
+        run: |
+          dotnet nuget push packages/*.nupkg

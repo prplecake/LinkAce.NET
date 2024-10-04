@@ -1,6 +1,8 @@
 ﻿using System.Net;
 using System.Text;
 using LinkAce.NET;
+using LinkAce.NET.Entites;
+using LinkAce.NET.Extensions;
 using Microsoft.Extensions.Configuration;
 Console.WriteLine("Hello, World!");
 
@@ -18,7 +20,15 @@ var linkAceConfig = configuration.GetSection("LinkAce");
 var linkAceClient = new LinkAceClient(linkAceConfig["Url"] ?? throw new InvalidOperationException(),
     linkAceConfig["ApiToken"] ?? throw new InvalidOperationException(),
     httpClient);
-var results = linkAceClient.SearchLinksByUrl("jrgnsn.net").Result;
+var results = linkAceClient.SearchLinksByUrl("jrgnsn.net").GetAwaiter().GetResult();
+var createResult = linkAceClient.CreateLink(
+    new Link()
+    {
+        Title = "Test Link",
+        Url = "https://jrgnsn.net",
+        Description = "A test link",
+        Tags = new[]{ "test" }.ToTagArray()
+    }).GetAwaiter().GetResult();
 
 var _ = () => { };
 

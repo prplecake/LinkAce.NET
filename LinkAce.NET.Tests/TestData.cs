@@ -91,4 +91,34 @@ public class TestData
     ""to"": 1,
     ""total"": 1
 }";
+    public const string CreateLinkResponseJson = @"{
+    ""check_disabled"": false,
+    ""created_at"": ""2024-10-04T19:32:31.000000Z"",
+    ""description"": ""A test link"",
+    ""icon"": ""link"",
+    ""id"": 1819,
+    ""is_private"": false,
+    ""lists"": [],
+    ""status"": 0,
+    ""tags"": [
+        {
+            ""created_at"": ""2023-06-13T23:27:14.000000Z"",
+            ""deleted_at"": null,
+            ""id"": 880,
+            ""is_private"": false,
+            ""name"": ""test"",
+            ""pivot"": {
+                ""link_id"": 1819,
+                ""tag_id"": 880
+            },
+            ""updated_at"": ""2023-06-13T23:27:14.000000Z"",
+            ""user_id"": 1
+        }
+    ],
+    ""thumbnail"": null,
+    ""title"": ""Test Link"",
+    ""updated_at"": ""2024-10-04T19:32:31.000000Z"",
+    ""url"": ""https://jrgnsn.net"",
+    ""user_id"": 1
+}";
 }

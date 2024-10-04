@@ -17,6 +17,9 @@ public class LinkAceClient
 {
     private static string? _apiUrl;
     private static HttpClient _client;
+    private JsonSerializerOptions _serializationOptions = new(JsonSerializerDefaults.Web){
+        PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
+    };
     /// <summary>
     ///     Initializes a new instance of the <see cref="LinkAceClient" /> class with the specified URL and HTTP client.
     /// </summary>
@@ -51,7 +54,7 @@ public class LinkAceClient
     public async Task<HttpResponseMessage?> CreateLink(Link link)
     {
         var response = await _client.PostAsync($"{_apiUrl}/links",
-            new StringContent(JsonSerializer.Serialize(link), Encoding.UTF8,
+            new StringContent(JsonSerializer.Serialize(link, _serializationOptions), Encoding.UTF8,
                 MediaTypeNames.Application.Json));
         return response;
     }
@@ -80,7 +83,7 @@ public class LinkAceClient
     public async Task<HttpResponseMessage?> UpdateLinkById(int id, Link link)
     {
         var response = await _client.PatchAsync($"{_apiUrl}/links/{id}",
-            new StringContent(JsonSerializer.Serialize(link), Encoding.UTF8,
+            new StringContent(JsonSerializer.Serialize(link, _serializationOptions), Encoding.UTF8,
                 MediaTypeNames.Application.Json));
         return response;
     }

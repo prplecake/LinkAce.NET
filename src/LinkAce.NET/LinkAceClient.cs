@@ -1,11 +1,11 @@
 ﻿using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text;
+using System.Text.Json;
 using System.Web;
 using JetBrains.Annotations;
 using LinkAce.NET.ApiResponses;
 using LinkAce.NET.Entites;
-using Newtonsoft.Json;
 
 namespace LinkAce.NET;
 
@@ -51,7 +51,7 @@ public class LinkAceClient
     public async Task<HttpResponseMessage?> CreateLink(Link link)
     {
         var response = await _client.PostAsync($"{_apiUrl}/links",
-            new StringContent(JsonConvert.SerializeObject(link), Encoding.UTF8,
+            new StringContent(JsonSerializer.Serialize(link), Encoding.UTF8,
                 MediaTypeNames.Application.Json));
         return response;
     }
@@ -67,7 +67,7 @@ public class LinkAceClient
         query["query"] = url;
         uriBuilder.Query = query.ToString();
         var response = await _client.GetAsync(uriBuilder.ToString());
-        var obj = JsonConvert.DeserializeObject<SearchLinkResponse>(
+        var obj = JsonSerializer.Deserialize<SearchLinkResponse>(
             await response.Content.ReadAsStringAsync());
         return obj;
     }
@@ -80,7 +80,7 @@ public class LinkAceClient
     public async Task<HttpResponseMessage?> UpdateLinkById(int id, Link link)
     {
         var response = await _client.PatchAsync($"{_apiUrl}/links/{id}",
-            new StringContent(JsonConvert.SerializeObject(link), Encoding.UTF8,
+            new StringContent(JsonSerializer.Serialize(link), Encoding.UTF8,
                 MediaTypeNames.Application.Json));
         return response;
     }

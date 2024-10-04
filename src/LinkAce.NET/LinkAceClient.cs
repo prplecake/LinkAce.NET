@@ -46,13 +46,14 @@ public class LinkAceClient
     /// <summary>
     ///     Creates a new link.
     /// </summary>
-    /// <param name="link">The link to create.</param>
+    /// <param name="createLinkRequest">The request to create a link.</param>
     /// <returns>The HTTP response message.</returns>
-    public async Task<HttpResponseMessage?> CreateLink(Link link)
+    public async Task<HttpResponseMessage?> CreateLink(CreateLinkRequest createLinkRequest)
     {
-        var response = await _client.PostAsync($"{_apiUrl}/links",
-            new StringContent(JsonConvert.SerializeObject(link), Encoding.UTF8,
-                MediaTypeNames.Application.Json));
+        var json = JsonConvert.SerializeObject(createLinkRequest, _serializationSettings);
+        var payload = new StringContent(json, Encoding.UTF8,
+            MediaTypeNames.Application.Json);
+        var response = await _client.PostAsync($"{_apiUrl}/links", payload);
         return response;
     }
     /// <summary>

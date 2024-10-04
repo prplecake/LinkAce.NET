@@ -3,19 +3,20 @@ using JetBrains.Annotations;
 namespace LinkAce.NET.Entites;
 
 [PublicAPI]
-public class Tag
+public class Tag : EntityBase
 {
-    public DateTime CreatedAt { get; set; }
-    public DateTime? DeletedAt { get; set; }
-    public int Id { get; set; }
-    public bool IsPrivate { get; set; }
+    /// <summary>
+    ///     Gets or sets the name of the tag.
+    /// </summary>
     public string Name { get; set; }
+    /// <summary>
+    ///     Gets or sets the pivot associated with the tag.
+    /// </summary>
     public Pivot Pivot { get; set; }
-    public DateTime UpdatedAt { get; set; }
-    public int UserId { get; set; }
-
-    public static implicit operator Tag(string v)
-    {
-        return new Tag { Name = v };
-    }
+    /// <summary>
+    ///     Implicitly converts a string to a Tag object.
+    /// </summary>
+    /// <param name="v">The string to convert.</param>
+    /// <returns>A Tag object with the Name property set to the input string.</returns>
+    public static implicit operator Tag(string v) => new() { Name = v };
 }

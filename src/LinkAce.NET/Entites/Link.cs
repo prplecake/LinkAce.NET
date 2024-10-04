@@ -43,7 +43,7 @@ public class Link
     /// <summary>
     ///     Gets or sets the tags associated with the link.
     /// </summary>
-    public string[]? Tags { get; set; }
+    public Tag[]? Tags { get; set; }
     /// <summary>
     ///     Gets or sets the title of the link.
     /// </summary>

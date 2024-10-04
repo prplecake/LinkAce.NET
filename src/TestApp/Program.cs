@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 Console.WriteLine("Hello, World!");
 
 var configuration = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json", false, true)
+    .AddYamlFile("settings.yml", false, true)
     .Build();
 
 var handler = new HttpClientHandler()

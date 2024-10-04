@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\LinkAce.Api\LinkAce.Api.csproj" />
+      <ProjectReference Include="..\LinkAce.NET\LinkAce.NET.csproj" />
     </ItemGroup>
 
 </Project>

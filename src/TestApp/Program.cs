@@ -1,4 +1,4 @@
-﻿using LinkAce.Api;
+﻿using LinkAce.NET;
 using Microsoft.Extensions.Configuration;
 Console.WriteLine("Hello, World!");
 

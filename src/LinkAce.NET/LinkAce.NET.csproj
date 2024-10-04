@@ -8,16 +8,24 @@
         <Title>LinkAce.NET</Title>
         <Authors>prplecake</Authors>
         <PackageProjectUrl>https://github.com/prplecake/LinkAce.NET</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/prplecake/LinkAce.NET/blob/master/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/prplecake/LinkAce.NET</RepositoryUrl>
+        <Description>A C# library for interacting with the LinkAce API.</Description>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>api, LinkAce, LinkAceAPI, C#, bookmarks, bookmarking</PackageTags>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <DebugType>none</DebugType>
+      <DebugType>embedded</DebugType>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
+        <None Include="..\..\README.md" Pack="true" PackagePath=""/>
     </ItemGroup>
 
 </Project>

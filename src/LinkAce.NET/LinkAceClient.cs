@@ -16,7 +16,7 @@ namespace LinkAce.NET;
 public class LinkAceClient
 {
     private static string? _apiUrl;
-    private static HttpClient _client = new();
+    private static HttpClient _client;
     /// <summary>
     ///     Initializes a new instance of the <see cref="LinkAceClient" /> class with the specified URL and HTTP client.
     /// </summary>
@@ -32,10 +32,12 @@ public class LinkAceClient
     /// </summary>
     /// <param name="linkAceUrl">The base URL of the LinkAce.NET instance.</param>
     /// <param name="apiToken">The API token for authentication.</param>
-    public LinkAceClient(string linkAceUrl, string apiToken)
+    /// <param name="client">The HTTP client to use for requests.</param>
+    public LinkAceClient(string linkAceUrl, string apiToken, HttpClient? client = null)
     {
         _apiUrl = $"{linkAceUrl}/api/v1";
         // Setup HttpClient
+        _client = client ?? new HttpClient();
         _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
         _client.DefaultRequestHeaders.UserAgent.Add(Meta.UserAgent);
         _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);

@@ -1,7 +1,7 @@
 using System.Net.Http.Headers;
 using System.Reflection;
 
-namespace LinkAce.Api;
+namespace LinkAce.NET;
 
 public class Meta
 {

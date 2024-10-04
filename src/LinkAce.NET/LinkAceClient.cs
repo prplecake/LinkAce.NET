@@ -2,11 +2,11 @@
 using System.Net.Mime;
 using System.Text;
 using System.Web;
-using LinkAce.Api.Responses;
-using LinkAce.Entites;
+using LinkAce.NET.ApiResponses;
+using LinkAce.NET.Entites;
 using Newtonsoft.Json;
 
-namespace LinkAce.Api;
+namespace LinkAce.NET;
 
 public class LinkAceClient
 {

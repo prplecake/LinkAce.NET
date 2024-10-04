@@ -1,4 +1,4 @@
-namespace LinkAce.Entites;
+namespace LinkAce.NET.Entites;
 
 public class Link
 {

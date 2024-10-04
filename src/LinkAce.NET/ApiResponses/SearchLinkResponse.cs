@@ -1,6 +1,6 @@
-using LinkAce.Entites;
+using LinkAce.NET.Entites;
 
-namespace LinkAce.Api.Responses;
+namespace LinkAce.NET.ApiResponses;
 
 public class SearchLinkResponse
 {

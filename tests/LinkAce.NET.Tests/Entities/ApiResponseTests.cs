@@ -4,13 +4,13 @@ using LinkAce.NET.Tests.Helpers;
 namespace LinkAce.NET.Tests.ApiResponses;
 
 [TestClass]
-public class SearchLinkResponseTests
+public class ApiResponseTests
 {
     [TestMethod]
     public void SearchLinkResponse_HasProperties()
     {
         // Arrange
-        SearchLinkResponse obj = new();
+        ApiResponse<object> obj = new();
         const int expectedCount = 12;
 
         // Assert

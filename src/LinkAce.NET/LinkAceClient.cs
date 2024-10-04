@@ -63,16 +63,17 @@ public class LinkAceClient
     /// </summary>
     /// <param name="url">The URL to search for.</param>
     /// <returns>The search response containing the links.</returns>
-    public async Task<SearchLinkResponse?> SearchLinksByUrl(string url)
+    public async Task<List<Link>?> SearchLinksByUrl(string url)
     {
         var uriBuilder = new UriBuilder($"{_apiUrl}/search/links");
         var query = HttpUtility.ParseQueryString(string.Empty);
         query["query"] = url;
         uriBuilder.Query = query.ToString();
         var response = await _client.GetAsync(uriBuilder.ToString());
-        var obj = JsonSerializer.Deserialize<SearchLinkResponse>(
+        var obj = JsonSerializer.Deserialize<ApiResponse<List<Link>>>(
             await response.Content.ReadAsStringAsync());
-        return obj;
+        var links = obj?.Data;
+        return links;
     }
     /// <summary>
     ///     Updates a link by its ID.

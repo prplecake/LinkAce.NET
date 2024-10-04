@@ -7,7 +7,7 @@ namespace LinkAce.NET.ApiResponses;
 ///     Represents the response from a search query for links.
 /// </summary>
 [PublicAPI]
-public class SearchLinkResponse
+public class ApiResponse<T>
 {
     /// <summary>
     ///     Gets or sets the current page number.
@@ -16,7 +16,7 @@ public class SearchLinkResponse
     /// <summary>
     ///     Gets or sets the list of links returned by the search.
     /// </summary>
-    public List<Link>? Data { get; set; }
+    public T? Data { get; set; }
     /// <summary>
     ///     Gets or sets the URL of the first page.
     /// </summary>

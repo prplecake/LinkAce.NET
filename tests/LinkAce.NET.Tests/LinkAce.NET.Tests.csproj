@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\LinkAce.NET\LinkAce.NET.csproj" />
+    <ProjectReference Include="..\..\src\LinkAce.NET\LinkAce.NET.csproj" />
   </ItemGroup>
 
 </Project>

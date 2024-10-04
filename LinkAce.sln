@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkAce.NET", "src\LinkAce.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "src\TestApp\TestApp.csproj", "{97052387-BAA1-40E8-A861-C412B373FBDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkAce.NET.Tests", "LinkAce.NET.Tests\LinkAce.NET.Tests.csproj", "{671997C6-2DA3-45AB-87C2-4A335C976685}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkAce.NET.Tests", "tests\LinkAce.NET.Tests\LinkAce.NET.Tests.csproj", "{671997C6-2DA3-45AB-87C2-4A335C976685}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

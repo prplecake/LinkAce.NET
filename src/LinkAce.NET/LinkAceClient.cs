@@ -22,6 +22,7 @@ public class LinkAceClient
     /// </summary>
     /// <param name="linkAceUrl">The base URL of the LinkAce.NET instance.</param>
     /// <param name="httpClient">The HTTP client to use for requests.</param>
+    [Obsolete("Use the constructor with the API token instead.")]
     public LinkAceClient(string linkAceUrl, HttpClient httpClient)
     {
         _apiUrl = $"{linkAceUrl}/api/v1";

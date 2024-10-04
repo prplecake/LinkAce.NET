@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI Workflows", "CI Workflow
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkAce.NET", "src\LinkAce.NET\LinkAce.NET.csproj", "{6C83B6FB-E141-46BA-A446-8346BB11A7E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "src\TestApp\TestApp.csproj", "{97052387-BAA1-40E8-A861-C412B373FBDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestClient", "src\TestClient\TestClient.csproj", "{97052387-BAA1-40E8-A861-C412B373FBDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

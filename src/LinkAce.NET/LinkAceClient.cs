@@ -1,11 +1,11 @@
 ﻿using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text;
+using System.Text.Json;
 using System.Web;
 using JetBrains.Annotations;
 using LinkAce.NET.ApiResponses;
 using LinkAce.NET.Entites;
-using Newtonsoft.Json;
 
 namespace LinkAce.NET;
 
@@ -17,6 +17,9 @@ public class LinkAceClient
 {
     private static string? _apiUrl;
     private static HttpClient _client;
+    private JsonSerializerOptions _serializationOptions = new(JsonSerializerDefaults.Web){
+        PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
+    };
     /// <summary>
     ///     Initializes a new instance of the <see cref="LinkAceClient" /> class with the specified URL and HTTP client.
     /// </summary>
@@ -46,12 +49,12 @@ public class LinkAceClient
     /// <summary>
     ///     Creates a new link.
     /// </summary>
-    /// <param name="link">The link to create.</param>
+    /// <param name="createLinkRequest">The request to create a link.</param>
     /// <returns>The HTTP response message.</returns>
-    public async Task<HttpResponseMessage?> CreateLink(Link link)
+    public async Task<HttpResponseMessage?> CreateLink(CreateLinkRequest createLinkRequest)
     {
         var response = await _client.PostAsync($"{_apiUrl}/links",
-            new StringContent(JsonConvert.SerializeObject(link), Encoding.UTF8,
+            new StringContent(JsonSerializer.Serialize(createLinkRequest, _serializationOptions), Encoding.UTF8,
                 MediaTypeNames.Application.Json));
         return response;
     }
@@ -67,7 +70,7 @@ public class LinkAceClient
         query["query"] = url;
         uriBuilder.Query = query.ToString();
         var response = await _client.GetAsync(uriBuilder.ToString());
-        var obj = JsonConvert.DeserializeObject<SearchLinkResponse>(
+        var obj = JsonSerializer.Deserialize<SearchLinkResponse>(
             await response.Content.ReadAsStringAsync());
         return obj;
     }
@@ -80,7 +83,7 @@ public class LinkAceClient
     public async Task<HttpResponseMessage?> UpdateLinkById(int id, Link link)
     {
         var response = await _client.PatchAsync($"{_apiUrl}/links/{id}",
-            new StringContent(JsonConvert.SerializeObject(link), Encoding.UTF8,
+            new StringContent(JsonSerializer.Serialize(link, _serializationOptions), Encoding.UTF8,
                 MediaTypeNames.Application.Json));
         return response;
     }

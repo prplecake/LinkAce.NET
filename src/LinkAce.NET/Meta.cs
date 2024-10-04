@@ -9,7 +9,7 @@ namespace LinkAce.NET;
 public static class Meta
 {
     private const string Name = "LinkAce.NET";
-    private static readonly string AssemblyVersion = Assembly.GetEntryAssembly()!.GetName().Version!.ToString();
+    internal static readonly string AssemblyVersion = Assembly.GetEntryAssembly()!.GetName().Version!.ToString();
     /// <summary>
     ///     The user agent information for HTTP requests.
     /// </summary>

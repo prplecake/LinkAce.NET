@@ -17,7 +17,7 @@ public class LinkAceClientTests
         _client = new LinkAceClient("https://links.example.com", TestData.TestApiKey, httpClient);
     }
     [TestMethod]
-    public async Task GetDnsZones_Success()
+    public async Task SearchLinksByUrl_Success()
     {
         // Arrange
         _mockHttpMessageHandler.Protected()
